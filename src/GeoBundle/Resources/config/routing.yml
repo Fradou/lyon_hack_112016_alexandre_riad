@@ -6,6 +6,14 @@ geo_homepage:
     path:     /
     defaults: { _controller: GeoBundle:Default:index }
 
-geo_bdload:
-    path:     /bdload
-    defaults: { _controller:GeoBundle:Default:loadentity}
+# geo_bdload:
+#    path:     /bdload
+#   defaults: { _controller:GeoBundle:Default:loadentity}
+
+geo_test:
+    path:     /testmap
+    defaults: { _controller: GeoBundle:Default:testmap }
+
+geo_tour:
+    resource: "@GeoBundle/Resources/config/routing/tour.yml"
+    prefix:   /tour

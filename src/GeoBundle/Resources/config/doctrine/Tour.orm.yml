@@ -1,0 +1,38 @@
+GeoBundle\Entity\Tour:
+    type: entity
+    table: null
+    repositoryClass: GeoBundle\Repository\TourRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+            unique: true
+        category:
+            type: string
+            length: 255
+        cost:
+            type: string
+            length: 255
+            nullable: true
+        step1:
+            type: integer
+        step2:
+            type: integer
+        step3:
+            type: integer
+        step4:
+            type: integer
+            nullable: true
+        step5:
+            type: integer
+            nullable: true
+        step6:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }

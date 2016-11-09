@@ -4,7 +4,6 @@ namespace GeoBundle\Controller;
 
 use GeoBundle\Entity\Location;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Doctrine\ORM\EntityManager;
 
 class DefaultController extends Controller
 {
@@ -46,4 +45,9 @@ class DefaultController extends Controller
             return $this->render('GeoBundle:Default:index.html.twig');
 
         }
+
+    public function testmapAction()
+    {
+        return $this->render('GeoBundle:Default:test.html.twig');
+    }
 }
