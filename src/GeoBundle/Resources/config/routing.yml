@@ -1,3 +1,7 @@
 geo_homepage:
     path:     /
     defaults: { _controller: GeoBundle:Default:index }
+
+geo_bdload:
+    path:     /bdload
+    defaults: { _controller:GeoBundle:Default:loadentity}
