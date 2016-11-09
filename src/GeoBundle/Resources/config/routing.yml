@@ -1,3 +1,7 @@
+geo_location:
+    resource: "@GeoBundle/Resources/config/routing/location.yml"
+    prefix:   /location
+
 geo_homepage:
     path:     /
     defaults: { _controller: GeoBundle:Default:index }
