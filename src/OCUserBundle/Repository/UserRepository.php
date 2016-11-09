@@ -1,6 +1,6 @@
 <?php
 
-namespace GeoBundle\Repository;
+namespace OCUserBundle\Repository;
 
 /**
  * UserRepository

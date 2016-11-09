@@ -1,0 +1,40 @@
+OCUserBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: OCUserBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        username:
+            type: string
+            length: '100'
+            unique: true
+        password:
+            type: string
+            length: '25'
+        salt:
+            type: string
+            length: 255
+        roles:
+            type: array
+        mail:
+            type: string
+            length: '50'
+        country:
+            type: string
+            length: '50'
+        town:
+            type: string
+            length: '50'
+        language:
+            type: string
+            length: '50'
+        gamePoint:
+            type: string
+            length: '50'
+            column: game_point
+    lifecycleCallbacks: {  }

@@ -1,14 +1,13 @@
 <?php
 
-namespace GeoBundle\Entity;
+namespace OCUserBundle\Entity;
 
-use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  */
-class User implements UserInterface, EquatableInterface
+class User implements UserInterface
 {
     /**
      * @var int
@@ -18,22 +17,27 @@ class User implements UserInterface, EquatableInterface
     /**
      * @var string
      */
-    private $email;
+    private $username;
 
     /**
      * @var string
      */
-    private $firstName;
+    private $password;
 
     /**
      * @var string
      */
-    private $lastName;
+    private $salt;
+
+    /**
+     * @var array
+     */
+    private $roles;
 
     /**
      * @var string
      */
-    private $nickName;
+    private $mail;
 
     /**
      * @var string
@@ -51,7 +55,7 @@ class User implements UserInterface, EquatableInterface
     private $language;
 
     /**
-     * @var int
+     * @var string
      */
     private $gamePoint;
 
@@ -67,99 +71,123 @@ class User implements UserInterface, EquatableInterface
     }
 
     /**
-     * Set email
+     * Set username
      *
-     * @param string $email
+     * @param string $username
      *
      * @return User
      */
-    public function setEmail($email)
+    public function setUsername($username)
     {
-        $this->email = $email;
+        $this->username = $username;
 
         return $this;
     }
 
     /**
-     * Get email
+     * Get username
      *
      * @return string
      */
-    public function getEmail()
+    public function getUsername()
     {
-        return $this->email;
+        return $this->username;
     }
 
     /**
-     * Set firstName
+     * Set password
      *
-     * @param string $firstName
+     * @param string $password
      *
      * @return User
      */
-    public function setFirstName($firstName)
+    public function setPassword($password)
     {
-        $this->firstName = $firstName;
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * Get firstName
+     * Get password
      *
      * @return string
      */
-    public function getFirstName()
+    public function getPassword()
     {
-        return $this->firstName;
+        return $this->password;
     }
 
     /**
-     * Set lastName
+     * Set salt
      *
-     * @param string $lastName
+     * @param string $salt
      *
      * @return User
      */
-    public function setLastName($lastName)
+    public function setSalt($salt)
     {
-        $this->lastName = $lastName;
+        $this->salt = $salt;
 
         return $this;
     }
 
     /**
-     * Get lastName
+     * Get salt
      *
      * @return string
      */
-    public function getLastName()
+    public function getSalt()
     {
-        return $this->lastName;
+        return $this->salt;
     }
 
     /**
-     * Set nickName
+     * Set roles
      *
-     * @param string $nickName
+     * @param array $roles
      *
      * @return User
      */
-    public function setNickName($nickName)
+    public function setRoles($roles)
     {
-        $this->nickName = $nickName;
+        $this->roles = $roles;
 
         return $this;
     }
 
     /**
-     * Get nickName
+     * Get roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+    /**
+     * Set mail
+     *
+     * @param string $mail
+     *
+     * @return User
+     */
+    public function setMail($mail)
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * Get mail
      *
      * @return string
      */
-    public function getNickName()
+    public function getMail()
     {
-        return $this->nickName;
+        return $this->mail;
     }
 
     /**
@@ -237,7 +265,7 @@ class User implements UserInterface, EquatableInterface
     /**
      * Set gamePoint
      *
-     * @param integer $gamePoint
+     * @param string $gamePoint
      *
      * @return User
      */
@@ -251,97 +279,15 @@ class User implements UserInterface, EquatableInterface
     /**
      * Get gamePoint
      *
-     * @return int
+     * @return string
      */
     public function getGamePoint()
     {
         return $this->gamePoint;
     }
-    /**
-     * @var string
-     */
-    private $password;
 
-    /**
-     * @var string
-     */
-    private $role;
-
-    /**
-     * @var string
-     */
-    private $salt;
-
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
+    public function eraseCredentials()
     {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-
-    /**
-     * Set role
-     *
-     * @param string $role
-     *
-     * @return User
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return string
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
-
-    /**
-     * Set salt
-     *
-     * @param string $salt
-     *
-     * @return User
-     */
-    public function setSalt($salt)
-    {
-        $this->salt = $salt;
-
-        return $this;
-    }
-
-    /**
-     * Get salt
-     *
-     * @return string
-     */
-    public function getSalt()
-    {
-        return $this->salt;
     }
 }
+
