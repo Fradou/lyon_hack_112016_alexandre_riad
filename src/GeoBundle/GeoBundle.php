@@ -1,9 +1,9 @@
 <?php
 
-namespace AppBundle;
+namespace GeoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class AppBundle extends Bundle
+class GeoBundle extends Bundle
 {
 }
