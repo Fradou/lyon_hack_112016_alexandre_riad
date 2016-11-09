@@ -15,6 +15,7 @@ security:
           users:
             user:  { password: userpass, roles: [ 'ROLE_USER' ] }
             admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+            dev: { password: 1234, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -31,7 +32,7 @@ security:
               check_path: login_check
             logout:
               path:       logout
-              target:     /platform
+              target:     /
 
 
         # http_basic: ~
