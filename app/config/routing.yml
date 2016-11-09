@@ -1,3 +1,7 @@
+oc_user:
+    resource: "@OCUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 geo:
     resource: "@GeoBundle/Resources/config/routing.yml"
     prefix:   /

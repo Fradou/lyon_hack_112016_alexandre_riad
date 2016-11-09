@@ -1,3 +1,7 @@
+oc_user_user:
+    resource: "@OCUserBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
 oc_user_homepage:
     path:     /
-    defaults: { _controller: OCUserBundle:Default:index }
+    defaults: { _controller: GeoBundle:Default:home }
