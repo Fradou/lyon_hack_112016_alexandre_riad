@@ -12,24 +12,6 @@
 </head>
 {% block body %}
     <h1>Votre itinéraire du jour !</h1>
-  {#  {{ dump(allloc) }}  #}
-
-{#
-{{ dump(allloc) }}
-{{ dump(coordo) }}
-{{ dump(coordo.0.longitude) }}
-
-
-{% set i=0 %}
-    {% for coord in coordo %}
-        {%  set step{{ i }}[0] = {{ coordo.{{ i }}['name']}} %};
-    {%  endfor %}
-
-
-
-    for (i = 0; i < count(coordo); i++) {
-                                                }
-    #}
 
     <div id="map"></div>
     <script>

@@ -2,6 +2,7 @@
 
 namespace GeoBundle\Controller;
 
+use GeoBundle\Entity\Location;
 use GeoBundle\Entity\Tour;
 use GeoBundle\Repository\DefaultRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -72,11 +73,56 @@ class TourController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $tours = $em->getRepository('GeoBundle:Tour')->findAll();
 
-        $this->container->get('security.context')->getToken()->getUser();
+        $selloc = [];
+        $i=0;
+        foreach($tours as $tour) {
+            $selloc[$i] = $tour->name;
+            $i++;
+        };
+        $j=0;
+        foreach($selloc as $sello ) {
+           $recup = $em->getRepository('GeoBundle:Location')->findBy(
+           array('name' => $sello)
+           );
+            $localisation[$j] = new Location();
+            $localisation[$j]->setType($recup['properties']['type']);
+            $localisation[$j]->setTypeDetail($recup['properties']['type_detail']);
+            $localisation[$j]->setName($recup['properties']['nom']);
+            $localisation[$j]->setAddress($recup['properties']['adresse']);
+            $localisation[$j]->setPostalcode($recup['properties']['codepostal']);
+            $localisation[$j]->setTown($recup['properties']['commune']);
+            $localisation[$j]->setPhone($recup['properties']['telephone']);
+            $localisation[$j]->setMail($recup['properties']['email']);
+            $localisation[$j]->setWebsite($recup['properties']['siteweb']);
+            $localisation[$j]->setFacebook($recup['properties']['facebook']);
+            $localisation[$j]->setRank($recup['properties']['classement']);
+            $localisation[$j]->setOpenhour($recup['properties']['ouverture']);
+            $localisation[$j]->setRateclear($recup['properties']['tarifsenclair']);
+            $localisation[$j]->setMinrate($recup['properties']['tarifsmin']);
+            $localisation[$j]->setMaxrate($recup['properties']['tarifsmax']);
+            $localisation[$j]->setProducer($recup['properties']['producteur']);
+            $localisation[$j]->setLatitude($recup['geometry']['coordinates'][1]);
+            $localisation[$j]->setLongitude($recup['geometry']['coordinates'][0]);
+            $j++;
+
+#        $coordo = [];
+ #       $j=0;
+  #      foreach($selloc as $sellocs ){
+   #         $coordo[$j]['longitude']= $sellocs->longitude;
+    #        $coordo[$j]['latitude']= $sellocs->latitude;
+
+     #       $j++;
+
+       # return $this->render('tour/random.html.twig', array(
+        #    'allloc' => $selloc,
+         #   'coordo' => $coordo,
+       # ))
 
         return $this->render('tour/index.html.twig', array(
             'tours' => $tours,
+            'local' => $localisation
         ));
     }
 
