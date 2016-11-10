@@ -1,11 +1,31 @@
-{% extends 'base.html.twig' %}
 
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 500px;
+            width: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
 {% block body %}
     <h1>Votre itinéraire du jour !</h1>
 
-    {{ dump(allloc) }}
+{#
+{{ dump(allloc) }}
 {{ dump(coordo) }}
-    {{ dump(coordo.0.longitude) }}
+{{ dump(coordo.0.longitude) }}
+
+
+{% set i=0 %}
+    {% for coord in coordo %}
+        {%  set step{{ i }}[0] = {{ coordo.{{ i }}['name']}} %};
+    {%  endfor %}
+
+    #}
+
 
 
 
@@ -13,9 +33,10 @@
     <div id="map"></div>
     <script>
         function initMap() {
-            var step = [['name',{{ coordo.0.longitude }},{{ coordo.0.latitude }},1]['name',{{ coordo.1.longitude }},{{ coordo.1.latitude }},2]['name',{{ coordo.2.longitude }},{{ coordo.2.latitude }},3]['name',{{ coordo.3.longitude }},{{ coordo.3.latitude }},4]];
+            var step = [['name',{{ coordo[0]['latitude']}},{{coordo[0]['longitude']}}, 1], ['name',{{ coordo[2]['latitude']}},{{coordo[2]['longitude']}}, 2], ['name',{{ coordo[3]['latitude']}},{{coordo[3]['longitude']}}, 3], ['name',{{ coordo[4]['latitude']}},{{coordo[4]['longitude']}}, 4]]
+                    ;
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 15,
+                zoom: 14,
                 center: {lat: step[0][1], lng: step[0][2] }
             });
             for (i = 0; i < step.length; i++) {
@@ -25,10 +46,9 @@
                     title: step[i][0]
                 });
             }
-            alert('step');
         }
 
-        function calculate() {
+        {#    function calculate() {
             origin      = document.getElementById('origin').value; // Le point départ
             destination = document.getElementById('destination').value; // Le point d'arrivé
             if(origin && destination){
@@ -45,10 +65,10 @@
                 });
             } //http://code.google.com/intl/fr-FR/apis/maps/documentation/javascript/reference.html#DirectionsRequest
         }
-
+    #}
     </script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBRJYqepEx86x2cyTnEOjlCcM-FxsOoraY&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJYqepEx86x2cyTnEOjlCcM-FxsOoraY&callback=initMap">
     </script>
 
 
@@ -78,12 +98,12 @@
                 {{ location.minrate }}
                 {{ location.maxrate }}
                 {{ location.producer }}
-              {#  {{ location.latitude }} #}
-              {#  {{ location.longitude }} #}
                     <ul>
                         <li>
                             <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
                         </li>
                     </ul>
         {% endfor %}
+
+   {# <a href="{{ path('tour_edit', { 'id': location.id }) }}{{ path('front_jedonne') }}" class="home_carousel_btn_lien">Je booste</a> #}
 {% endblock %}

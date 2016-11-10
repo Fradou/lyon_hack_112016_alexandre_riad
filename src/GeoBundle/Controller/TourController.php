@@ -15,13 +15,19 @@ class TourController extends Controller
     public function randomAction($type, $n)
     {
         $em = $this->getDoctrine()->getManager();
-
-        $allloc = $em->getRepository('GeoBundle:Location')->findBy(
-            array('type' => $type),
-            array('id' => 'asc'),
-            5000,
-            0
-        );
+        if ($type=='ALL')
+            {
+            $allloc = $em->getRepository('GeoBundle:Location')->findAll();
+            }
+            else
+            {
+                $allloc = $em->getRepository('GeoBundle:Location')->findBy(
+                    array('type' => $type),
+                    array('id' => 'asc'),
+                    5000,
+                    0
+                );
+            };
         $keys = array_rand($allloc, $n);
         $selloc = [];
         $i=0;
