@@ -20,6 +20,9 @@ GeoBundle\Entity\Tour:
             type: string
             length: 255
             nullable: true
+        description:
+            type: text
+            nullable: true
         step1:
             type: integer
         step2:
@@ -35,4 +38,5 @@ GeoBundle\Entity\Tour:
         step6:
             type: integer
             nullable: true
+
     lifecycleCallbacks: {  }

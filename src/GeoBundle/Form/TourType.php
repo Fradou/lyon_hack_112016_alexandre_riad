@@ -13,7 +13,7 @@ class TourType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name')->add('category')->add('cost')->add('step1')->add('step2')->add('step3')->add('step4')->add('step5')->add('step6')        ;
+        $builder->add('name')->add('category')->add('cost')->add('description')->add('step1')->add('step2')->add('step3')->add('step4')->add('step5')->add('step6')        ;
     }
     
     /**

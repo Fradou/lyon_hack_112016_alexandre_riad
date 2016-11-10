@@ -1,29 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tours list</h1>
+    <h1>Liste des nos tours de Lyon</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Category</th>
-                <th>Cost</th>
-                <th>Step1</th>
-                <th>Step2</th>
-                <th>Step3</th>
-                <th>Step4</th>
-                <th>Step5</th>
-                <th>Step6</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
         {% for tour in tours %}
-            <tr>
+            <div>
+                <h2>{{ tour.name }}</h2>
                 <td><a href="{{ path('tour_show', { 'id': tour.id }) }}">{{ tour.id }}</a></td>
-                <td>{{ tour.name }}</td>
                 <td>{{ tour.category }}</td>
                 <td>{{ tour.cost }}</td>
                 <td>{{ tour.step1 }}</td>
@@ -37,10 +20,6 @@
                         <li>
                             <a href="{{ path('tour_show', { 'id': tour.id }) }}">show</a>
                         </li>
-                        <li>
-                            <a href="{{ path('tour_edit', { 'id': tour.id }) }}">edit</a>
-                        </li>
-                    </ul>
                 </td>
             </tr>
         {% endfor %}

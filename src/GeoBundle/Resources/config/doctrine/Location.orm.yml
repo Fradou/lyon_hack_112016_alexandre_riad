@@ -78,4 +78,5 @@ GeoBundle\Entity\Location:
             type: string
             length: 255
             nullable: true
+
     lifecycleCallbacks: {  }
