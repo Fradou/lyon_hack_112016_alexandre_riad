@@ -84,45 +84,45 @@
     </script>
 
 
-        {% for location in allloc %}
-                <h2>{{ location.name }}</h2>
-                <h3>{{ location.typeDetail }}</h3>
-                <div class="coordo">
-                Adresse :<br>
-                {{ location.address }}<br>
-                {{ location.postalcode }}<br>
-                {{ location.town }}<br>
-                Telephone : {{ location.phone }}<br>
-                    {% if location.mail %}
-                Mail : {{ location.mail }}<br>
-                    {% endif %}
-                    {% if location.website %}
-                Site internet : {{ location.website }}<br>
-                    {%  endif %}
-                    {% if location.facebook %}
-                Facebook : {{ location.facebook }}<br>
-                    {% endif %}
-                </div>
-{% if location.rank %}
-                {{ location.rank }}<br>
-{% endif %}
-{% if location.openhour %}
-                {{ location.openhour }}<br>
-{% endif %}
-{% if location.rateclear %}
-                {{ location.rateclear }}<br>
-{% endif %}
-{% if location.producer %}
-                {{ location.producer }}<br>
-{% endif %}
-                    <ul>
-                        <li>
-                            <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
-                        </li>
-                    </ul>
-        {% endfor %}
+    {% for location in allloc %}
+    <h2>{{ location.name }}</h2>
+    <h3>{{ location.typeDetail }}</h3>
+    <div class="coordo">
+        Adresse :<br>
+        {{ location.address }}<br>
+        {{ location.postalcode }}<br>
+        {{ location.town }}<br>
+        Telephone : {{ location.phone }}<br>
+        {% if location.mail %}
+            Mail : {{ location.mail }}<br>
+        {% endif %}
+        {% if location.website %}
+            Site internet : {{ location.website }}<br>
+        {%  endif %}
+        {% if location.facebook %}
+            Facebook : {{ location.facebook }}<br>
+        {% endif %}
+    </div>
+    {% if location.rank %}
+        {{ location.rank }}<br>
+    {% endif %}
+    {% if location.openhour %}
+        {{ location.openhour }}<br>
+    {% endif %}
+    {% if location.rateclear %}
+        {{ location.rateclear }}<br>
+    {% endif %}
+    {% if location.producer %}
+        {{ location.producer }}<br>
+    {% endif %}
+    <ul>
+        <li>
+            <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
+        </li>
+    </ul>
+    {% endfor %}
 
 
-   {#<a href="{{ path('tour_current', { 'tour1': , 'tour2': , 'tour3': , 'tour4':, 'tour5':})}}">Je choisis ce trajet</a> #}
+    {#<a href="{{ path('tour_current', { 'tour1': , 'tour2': , 'tour3': , 'tour4':, 'tour5':})}}">Je choisis ce trajet</a> #}
 
 {% endblock %}
