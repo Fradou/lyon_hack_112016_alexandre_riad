@@ -30,8 +30,27 @@ class TourController extends Controller
             $i++;
         }
 
+        $coordo = [];
+        $j=0;
+        foreach($selloc as $sellocs ){
+            $coordo[$j]['longitude']= $sellocs->longitude;
+            $coordo[$j]['latitude']= $sellocs->latitude;
+
+            $j++;
+        }
+
+ #       $coord = [];
+  #      $k=0;
+   #     foreach($coordo as $coordos ){
+    #        $coord[$k][1]= $coordos->1;
+     #       $coord[$k][0]= $sellocs->latitude;
+
+      #      $j++;
+      #  }
+
         return $this->render('tour/random.html.twig', array(
             'allloc' => $selloc,
+            'coordo' => $coordo,
         ));
     }
     /**

@@ -1,72 +1,89 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Locations list</h1>
+    <h1>Votre itinéraire du jour !</h1>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Type</th>
-                <th>Typedetail</th>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Postalcode</th>
-                <th>Town</th>
-                <th>Phone</th>
-                <th>Mail</th>
-                <th>Website</th>
-                <th>Facebook</th>
-                <th>Rank</th>
-                <th>Openhour</th>
-                <th>Rateclear</th>
-                <th>Minrate</th>
-                <th>Maxrate</th>
-                <th>Producer</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    {{ dump(allloc) }}
+{{ dump(coordo) }}
+    {{ dump(coordo.0.longitude) }}
+
+
+
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var step = [['name',{{ coordo.0.longitude }},{{ coordo.0.latitude }},1]['name',{{ coordo.1.longitude }},{{ coordo.1.latitude }},2]['name',{{ coordo.2.longitude }},{{ coordo.2.latitude }},3]['name',{{ coordo.3.longitude }},{{ coordo.3.latitude }},4]];
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: {lat: step[0][1], lng: step[0][2] }
+            });
+            for (i = 0; i < step.length; i++) {
+                var marker = new google.maps.Marker({
+                    position: {lat: step[i][1], lng: step[i][2]},
+                    map: map,
+                    title: step[i][0]
+                });
+            }
+            alert('step');
+        }
+
+        function calculate() {
+            origin      = document.getElementById('origin').value; // Le point départ
+            destination = document.getElementById('destination').value; // Le point d'arrivé
+            if(origin && destination){
+                var request = {
+                    origin      : origin,
+                    destination : destination,
+                    travelMode  : google.maps.DirectionsTravelMode.DRIVING // Type de transport
+                };
+                var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+                directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+                    if(status == google.maps.DirectionsStatus.OK){
+                        direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
+                    }
+                });
+            } //http://code.google.com/intl/fr-FR/apis/maps/documentation/javascript/reference.html#DirectionsRequest
+        }
+
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBRJYqepEx86x2cyTnEOjlCcM-FxsOoraY&callback=initMap">
+    </script>
+
+
+
         {% for location in allloc %}
-            <tr>
-                <td><a href="{{ path('location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
-                <td>{{ location.type }}</td>
-                <td>{{ location.typeDetail }}</td>
-                <td>{{ location.name }}</td>
-                <td>{{ location.address }}</td>
-                <td>{{ location.postalcode }}</td>
-                <td>{{ location.town }}</td>
-                <td>{{ location.phone }}</td>
-                <td>{{ location.mail }}</td>
-                <td>{{ location.website }}</td>
-                <td>{{ location.facebook }}</td>
-                <td>{{ location.rank }}</td>
-                <td>{{ location.openhour }}</td>
-                <td>{{ location.rateclear }}</td>
-                <td>{{ location.minrate }}</td>
-                <td>{{ location.maxrate }}</td>
-                <td>{{ location.producer }}</td>
-                <td>{{ location.latitude }}</td>
-                <td>{{ location.longitude }}</td>
-                <td>
+                <h2>{{ location.name }}</h2>
+                <h3>{{ location.typeDetail }}</h3>
+                <div class="coordo">
+                Adresse :<br>
+                {{ location.address }}<br>
+                {{ location.postalcode }}<br>
+                {{ location.town }}<br>
+                Telephone : {{ location.phone }}<br>
+                    {% if location.mail %}
+                Mail : {{ location.mail }}<br>
+                    {% endif %}
+                    {% if location.website %}
+                Site internet : {{ location.website }}<br>
+                    {%  endif %}
+                    {% if location.facebook %}
+                Facebook : {{ location.facebook }}<br>
+                    {% endif %}
+                </div>
+                {{ location.rank }}
+                {{ location.openhour }}
+                {{ location.rateclear }}
+                {{ location.minrate }}
+                {{ location.maxrate }}
+                {{ location.producer }}
+              {#  {{ location.latitude }} #}
+              {#  {{ location.longitude }} #}
                     <ul>
                         <li>
-                            <a href="{{ path('location_show', { 'id': location.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('location_edit', { 'id': location.id }) }}">edit</a>
+                            <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
                         </li>
                     </ul>
-                </td>
-            </tr>
         {% endfor %}
-        </tbody>
-    </table>
-    <ul>
-        <li>
-            <a href="{{ path('location_new') }}">Create a new location</a>
-        </li>
-    </ul>
 {% endblock %}
