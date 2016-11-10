@@ -41,7 +41,18 @@ body {
     border: solid 2px #ffffff;
 }
 
+/**** GOOGLE MAP ****/
 
+#map {
+    height: 50vh;
+    width: 100%;
+}
+
+#random-activities {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+}
 
 /**** REGISTER FORM ****/
 
