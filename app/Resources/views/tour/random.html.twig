@@ -1,19 +1,12 @@
+{% extends '@Geo/layout.html.twig' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        #map {
-            height: 500px;
-            width: 50%;
-        }
-    </style>
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-</head>
 {% block body %}
-    <h1>Votre itinéraire du jour !</h1>
 
-    <div id="map"></div>
+    <section id="map">
+        <h1>Votre itinéraire du jour !</h1>
+
+        <div id="map"></div>
+    </section>
     <script>
         function initMap() {
             var step = [['name',{{ coordo[0]['latitude']}},{{coordo[0]['longitude']}}, 0],
@@ -64,47 +57,46 @@
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJYqepEx86x2cyTnEOjlCcM-FxsOoraY&callback=initMap">
     </script>
-
-
-    {% for location in allloc %}
-    <h2>{{ location.name }}</h2>
-    <h3>{{ location.typeDetail }}</h3>
-    <div class="coordo">
-        Adresse :<br>
-        {{ location.address }}<br>
-        {{ location.postalcode }}<br>
-        {{ location.town }}<br>
-        Telephone : {{ location.phone }}<br>
-        {% if location.mail %}
-            Mail : {{ location.mail }}<br>
+    <section id="random-activities">
+        {% for location in allloc %}
+        <h2>{{ location.name }}</h2>
+        <h3>{{ location.typeDetail }}</h3>
+        <div class="coordo">
+            Adresse :<br>
+            {{ location.address }}<br>
+            {{ location.postalcode }}<br>
+            {{ location.town }}<br>
+            <p>Telephone : {{ location.phone }}<br>
+            {% if location.mail %}
+                Mail : {{ location.mail }}<br>
+            {% endif %}
+            {% if location.website %}
+                Site internet : {{ location.website }}<br>
+            {%  endif %}
+            {% if location.facebook %}
+                Facebook : {{ location.facebook }}<br>
+            {% endif %}</p>
+        </div>
+        <p>
+        {% if location.rank %}
+            {{ location.rank }}<br>
         {% endif %}
-        {% if location.website %}
-            Site internet : {{ location.website }}<br>
-        {%  endif %}
-        {% if location.facebook %}
-            Facebook : {{ location.facebook }}<br>
+        {% if location.openhour %}
+            {{ location.openhour }}<br>
         {% endif %}
-    </div>
-    {% if location.rank %}
-        {{ location.rank }}<br>
-    {% endif %}
-    {% if location.openhour %}
-        {{ location.openhour }}<br>
-    {% endif %}
-    {% if location.rateclear %}
-        {{ location.rateclear }}<br>
-    {% endif %}
-    {% if location.producer %}
-        {{ location.producer }}<br>
-    {% endif %}
-    <ul>
-        <li>
-            <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
-        </li>
-    </ul>
-    {% endfor %}
-
+        {% if location.rateclear %}
+            {{ location.rateclear }}<br>
+        {% endif %}
+        {% if location.producer %}
+            {{ location.producer }}<br>
+        {% endif %}</p>
+        <ul>
+            <li>
+                <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
+            </li>
+        </ul>
+        {% endfor %}
 
     {#<a href="{{ path('tour_current', { 'tour1': , 'tour2': , 'tour3': , 'tour4':, 'tour5':})}}">Je choisis ce trajet</a> #}
-
+    </section>
 {% endblock %}
