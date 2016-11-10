@@ -1,18 +1,5 @@
-oc_user:
-    resource: "@OCUserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 geo:
     resource: "@GeoBundle/Resources/config/routing.yml"
     prefix:   /
 
-login:
-    path: /login
-    defaults:
-        _controller: OCUserBundle:Security:login
 
-login_check:
-    path: /login_check
-
-logout:
-    path: /logout

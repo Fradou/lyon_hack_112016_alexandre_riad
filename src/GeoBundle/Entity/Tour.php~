@@ -32,32 +32,32 @@ class Tour
     /**
      * @var int
      */
-    private $step1;
+    public $step1;
 
     /**
      * @var int
      */
-    private $step2;
+    public $step2;
 
     /**
      * @var int
      */
-    private $step3;
+    public $step3;
 
     /**
      * @var int
      */
-    private $step4;
+    public $step4;
 
     /**
      * @var int
      */
-    private $step5;
+    public $step5;
 
     /**
      * @var int
      */
-    private $step6;
+    public $step6;
 
 
     /**

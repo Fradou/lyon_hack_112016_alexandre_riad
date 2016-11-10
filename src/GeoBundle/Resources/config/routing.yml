@@ -22,3 +22,5 @@ geo_tour:
     resource: "@GeoBundle/Resources/config/routing/tour.yml"
     prefix:   /tour
 
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
