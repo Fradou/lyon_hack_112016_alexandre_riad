@@ -15,16 +15,12 @@
                 <td>{{ tour.step4 }}</td>
                 <td>{{ tour.step5 }}</td>
                 <td>{{ tour.step6 }}</td>
-                <td>
-                    <ul>
+
                         <li>
                             <a href="{{ path('tour_show', { 'id': tour.id }) }}">show</a>
                         </li>
-                </td>
-            </tr>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
 
     <ul>
         <li>

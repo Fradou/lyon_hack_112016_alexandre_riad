@@ -27,3 +27,8 @@ tour_random:
     path:     /{type}/{n}/random
     defaults: { _controller: "GeoBundle:Tour:random" }
     methods:  GET
+
+tour_predefined:
+    path:     /predef
+    defaults: { _controller: "GeoBundle:Tour:random" }
+    methods:  GET

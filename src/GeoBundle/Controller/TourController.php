@@ -44,20 +44,20 @@ class TourController extends Controller
 
             $j++;
         }
-
- #       $coord = [];
-  #      $k=0;
-   #     foreach($coordo as $coordos ){
-    #        $coord[$k][1]= $coordos->1;
-     #       $coord[$k][0]= $sellocs->latitude;
-
-      #      $j++;
-      #  }
-
         return $this->render('tour/random.html.twig', array(
             'allloc' => $selloc,
             'coordo' => $coordo,
         ));
+    }
+
+    public function predefinedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $tours = $em->getRepository('GeoBundle:Tour')->findAll();
+        return $this->render('tour/index.html.twig', array(
+            'tours' => $tours,
+    ));
+
     }
     /**
      * Lists all tour entities.
