@@ -1,0 +1,18 @@
+GeoBundle\Entity\User:
+    type:  entity
+    table: geolyon
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        country:
+            type: string
+            length: 255
+        city:
+            type: string
+            length: 255
+        language:
+            type: string
+            length: 255
