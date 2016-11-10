@@ -10,9 +10,9 @@ homepage:
     path:     /
     defaults: { _controller: GeoBundle:Default:home }
 
-# geo_bdload:
+#geo_bdload:
 #    path:     /bdload
-#   defaults: { _controller:GeoBundle:Default:loadentity}
+#    defaults: { _controller:GeoBundle:Default:loadentity}
 
 geo_test:
     path:     /testmap
