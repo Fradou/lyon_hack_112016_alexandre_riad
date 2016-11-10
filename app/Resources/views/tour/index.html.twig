@@ -5,6 +5,7 @@
 
         {% for tour in tours %}
             <div>
+
                 <h2>{{ tour.name }}</h2>
                 <td><a href="{{ path('tour_show', { 'id': tour.id }) }}">{{ tour.id }}</a></td>
                 <td>{{ tour.category }}</td>
@@ -15,16 +16,14 @@
                 <td>{{ tour.step4 }}</td>
                 <td>{{ tour.step5 }}</td>
                 <td>{{ tour.step6 }}</td>
-                <td>
-                    <ul>
+
                         <li>
                             <a href="{{ path('tour_show', { 'id': tour.id }) }}">show</a>
                         </li>
-                </td>
-            </tr>
+            </div>
+
+                {%  dump(tour) %}
         {% endfor %}
-        </tbody>
-    </table>
 
     <ul>
         <li>

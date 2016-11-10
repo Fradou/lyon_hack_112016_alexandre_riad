@@ -55,4 +55,9 @@ class DefaultController extends Controller
     {
         return $this->render('GeoBundle:Default:test.html.twig');
     }
+
+    public function rankingAction()
+    {
+
+    }
 }

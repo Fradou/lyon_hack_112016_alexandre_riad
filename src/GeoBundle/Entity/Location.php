@@ -97,12 +97,12 @@ class Location
     /**
      * @var string
      */
-    private $latitude;
+    public $latitude;
 
     /**
      * @var string
      */
-    private $longitude;
+    public $longitude;
 
 
     /**
