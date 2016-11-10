@@ -1,3 +1,6 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
 
 /**** ACCEUIL ****/
 
@@ -14,6 +17,11 @@
     display: block;
     margin: 0 auto;
     padding-left: 36%;
+}
+
+#welcome a {
+    color: #363636;
+    font-size: 1.3em;
 }
 
 #welcome input {
@@ -33,13 +41,64 @@
     border: solid 2px #ffffff;
 }
 
+
+
 /**** REGISTER FORM ****/
 
+#form-register {
+    padding-top: 50px;
+    display: block;
+    margin: 0 auto;
+    width:500px;
+}
+
+#form-register label {
+    padding-right: 15px;
+}
 
 /**** LOGIN FORM ****/
 
 #login {
-    margin-top: 120px;
+    background-image: url(../img/musee-confluence.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 80vh;
+}
+
+#log {
+    padding-top: 100px;
+}
+
+#login h1 {
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 120px;
+}
+
+#login form {
+    display: block;
+    width: 400px;
+    margin: 0px auto;
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+}
+
+#login.form-log {
+    height: 40px;
+    width: 150px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: solid 2px #ffffff;
+    margin-bottom: 5px;
+    padding: 0 20px;
+}
+
+
+#form-button {
+    margin-top: 15px;
+    height: 35px;
+    width: 110px;
 }
 
 /**** FOOTER ****/
