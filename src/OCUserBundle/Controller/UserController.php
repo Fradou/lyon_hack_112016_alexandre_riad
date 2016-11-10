@@ -122,4 +122,10 @@ class UserController extends Controller
             ->getForm()
         ;
     }
+
+    public function profileAction()
+    {
+        return $this->render('user/profile.html.twig');
+    }
+
 }

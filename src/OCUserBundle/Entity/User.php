@@ -150,8 +150,12 @@ class User implements UserInterface
      */
     public function setRoles($roles)
     {
-        $this->roles = $roles;
-
+        if(empty($roles)) {
+            $this->roles = array('ROLE_USER');
+        }
+        else {
+            $this->roles = $roles;
+        }
         return $this;
     }
 

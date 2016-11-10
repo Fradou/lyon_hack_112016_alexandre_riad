@@ -10,39 +10,35 @@
                 <td>{{ user.id }}</td>
             </tr>
             <tr>
-                <th>Username</th>
+                <th>Votre pseudo :</th>
                 <td>{{ user.username }}</td>
             </tr>
             <tr>
-                <th>Password</th>
+                <th>Mot de passe</th>
                 <td>{{ user.password }}</td>
-            </tr>
-            <tr>
-                <th>Salt</th>
-                <td>{{ user.salt }}</td>
             </tr>
             <tr>
                 <th>Roles</th>
                 <td>{% if user.roles %}{{ user.roles|join(', ') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Mail</th>
+                <th>Email</th>
                 <td>{{ user.mail }}</td>
             </tr>
             <tr>
-                <th>Country</th>
+                <th>Pays</th>
                 <td>{{ user.country }}</td>
             </tr>
             <tr>
-                <th>Town</th>
+                <th>Ville</th>
                 <td>{{ user.town }}</td>
             </tr>
             <tr>
-                <th>Language</th>
+                <th>Langue</th>
                 <td>{{ user.language }}</td>
             </tr>
             <tr>
-                <th>Gamepoint</th>
+                <th>Point Actuel</th>
                 <td>{{ user.gamePoint }}</td>
             </tr>
         </tbody>
