@@ -17,7 +17,7 @@ class Tour
     /**
      * @var string
      */
-    private $name;
+    public $name;
 
     /**
      * @var string
@@ -32,32 +32,32 @@ class Tour
     /**
      * @var int
      */
-    public $step1;
+    private $step1;
 
     /**
      * @var int
      */
-    public $step2;
+    private $step2;
 
     /**
      * @var int
      */
-    public $step3;
+    private $step3;
 
     /**
      * @var int
      */
-    public $step4;
+    private $step4;
 
     /**
      * @var int
      */
-    public $step5;
+    private $step5;
 
     /**
      * @var int
      */
-    public $step6;
+    private $step6;
 
 
     /**
@@ -303,5 +303,34 @@ class Tour
     public function getDescription()
     {
         return $this->description;
+    }
+    /**
+     * @var array
+     */
+    private $step;
+
+
+    /**
+     * Set step
+     *
+     * @param array $step
+     *
+     * @return Tour
+     */
+    public function setStep($step)
+    {
+        $this->step = $step;
+
+        return $this;
+    }
+
+    /**
+     * Get step
+     *
+     * @return array
+     */
+    public function getStep()
+    {
+        return $this->step;
     }
 }

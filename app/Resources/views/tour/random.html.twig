@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 500px;
+            width: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+{% block body %}
+    <h1>Votre itinéraire du jour !</h1>
+
+    <div id="map"></div>
+    <script>
+        function initMap() {
+            var step = [['name',{{ coordo[0]['latitude']}},{{coordo[0]['longitude']}}, 0],
+                        ['name',{{ coordo[1]['latitude']}},{{coordo[1]['longitude']}}, 1],
+                        ['name',{{ coordo[2]['latitude']}},{{coordo[2]['longitude']}}, 2],
+                        {% if coordo[3] is defined %}
+                        ['name',{{ coordo[3]['latitude']}},{{coordo[3]['longitude']}}, 3]
+                        {% endif %},
+                        {% if coordo[4] is defined %}
+                        ['name',{{ coordo[4]['latitude']}},{{coordo[4]['longitude']}}, 4]
+                        {% endif %},
+                        {% if coordo[5] is defined %}
+                        ['name',{{ coordo[5]['latitude']}},{{coordo[5]['longitude']}}, 5]
+                        {% endif %}
+                    ]                    ;
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                center: {lat: step[0][1], lng: step[0][2] }
+            });
+            for (i = 0; i < step.length; i++) {
+                var marker = new google.maps.Marker({
+                    position: {lat: step[i][1], lng: step[i][2]},
+                    map: map,
+                    title: step[i][0]
+                });
+            }
+        }
+
+        {#    function calculate() {
+            origin      = document.getElementById('origin').value; // Le point départ
+            destination = document.getElementById('destination').value; // Le point d'arrivé
+            if(origin && destination){
+                var request = {
+                    origin      : origin,
+                    destination : destination,
+                    travelMode  : google.maps.DirectionsTravelMode.DRIVING // Type de transport
+                };
+                var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+                directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+                    if(status == google.maps.DirectionsStatus.OK){
+                        direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
+                    }
+                });
+            } //http://code.google.com/intl/fr-FR/apis/maps/documentation/javascript/reference.html#DirectionsRequest
+        }
+    #}
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJYqepEx86x2cyTnEOjlCcM-FxsOoraY&callback=initMap">
+    </script>
+
+
+    {% for location in allloc %}
+    <h2>{{ location.name }}</h2>
+    <h3>{{ location.typeDetail }}</h3>
+    <div class="coordo">
+        Adresse :<br>
+        {{ location.address }}<br>
+        {{ location.postalcode }}<br>
+        {{ location.town }}<br>
+        Telephone : {{ location.phone }}<br>
+        {% if location.mail %}
+            Mail : {{ location.mail }}<br>
+        {% endif %}
+        {% if location.website %}
+            Site internet : {{ location.website }}<br>
+        {%  endif %}
+        {% if location.facebook %}
+            Facebook : {{ location.facebook }}<br>
+        {% endif %}
+    </div>
+    {% if location.rank %}
+        {{ location.rank }}<br>
+    {% endif %}
+    {% if location.openhour %}
+        {{ location.openhour }}<br>
+    {% endif %}
+    {% if location.rateclear %}
+        {{ location.rateclear }}<br>
+    {% endif %}
+    {% if location.producer %}
+        {{ location.producer }}<br>
+    {% endif %}
+    <ul>
+        <li>
+            <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
+        </li>
+    </ul>
+    {% endfor %}
+
+
+    {#<a href="{{ path('tour_current', { 'tour1': , 'tour2': , 'tour3': , 'tour4':, 'tour5':})}}">Je choisis ce trajet</a> #}
+
+{% endblock %}

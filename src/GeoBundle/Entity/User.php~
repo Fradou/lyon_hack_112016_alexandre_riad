@@ -71,6 +71,8 @@ class User extends BaseUser
     {
         $this->language = $language;
     }
+<<<<<<< HEAD
+=======
 
     /**
      * @return mixed
@@ -103,4 +105,5 @@ class User extends BaseUser
     {
         $this->lastName = $lastName;
     }
+>>>>>>> 983b56583c0590eb18a0603302a220a362c4a553
 }
