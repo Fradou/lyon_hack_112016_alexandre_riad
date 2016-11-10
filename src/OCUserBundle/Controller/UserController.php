@@ -29,7 +29,8 @@ class UserController extends Controller
 
     /**
      * Creates a new user entity.
-     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function newAction(Request $request)
     {

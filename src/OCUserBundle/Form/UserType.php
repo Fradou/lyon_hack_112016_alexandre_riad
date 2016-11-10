@@ -3,6 +3,7 @@
 namespace OCUserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,17 @@ class UserType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('username')->add('password')->add('salt')->add('roles')->add('mail')->add('country')->add('town')->add('language')->add('gamePoint')        ;
+        $builder
+            ->add('username')
+            ->add('password')
+            ->add('salt')
+            ->add('roles') // ->add('roles', HiddenType::class, array( 'data' => 'ROLE_USER'))
+            ->add('mail')
+            ->add('country')
+            ->add('town')
+            ->add('language')
+            ->add('gamePoint')
+        ;
     }
     
     /**

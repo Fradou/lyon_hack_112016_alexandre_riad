@@ -10,4 +10,5 @@ namespace OCUserBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }
