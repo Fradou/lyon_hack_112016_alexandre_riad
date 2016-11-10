@@ -32,3 +32,8 @@ tour_predefined:
     path:     /predef
     defaults: { _controller: "GeoBundle:Tour:random" }
     methods:  GET
+
+tour_current:
+    path:     /current
+    defaults: { _controller: "GeoBundle:Tour:currenttour" }
+    methods:  GET

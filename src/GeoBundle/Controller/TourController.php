@@ -3,6 +3,7 @@
 namespace GeoBundle\Controller;
 
 use GeoBundle\Entity\Tour;
+use GeoBundle\Repository\DefaultRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -50,12 +51,17 @@ class TourController extends Controller
         ));
     }
 
-    public function predefinedAction()
+    public function currenttourAction($tour1, $tour2, $tour3, $tour4, $tour5)
     {
         $em = $this->getDoctrine()->getManager();
-        $tours = $em->getRepository('GeoBundle:Tour')->findAll();
-        return $this->render('tour/index.html.twig', array(
-            'tours' => $tours,
+        $use = $this->container->get('security.context')->getToken()->getUser();
+        $use->setCurrent1 = $tour1;
+        $use->setCurrent2 = $tour2;
+        $use->setCurrent3 = $tour3;
+        $use->setCurrent4 = $tour4;
+        $use->setCurrent5 = $tour5;
+
+        return $this->render('default/index.html.twig', array(
     ));
 
     }
@@ -67,7 +73,7 @@ class TourController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $tours = $em->getRepository('GeoBundle:Tour')->findAll();
+        $this->container->get('security.context')->getToken()->getUser();
 
         return $this->render('tour/index.html.twig', array(
             'tours' => $tours,

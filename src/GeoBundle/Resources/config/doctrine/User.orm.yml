@@ -1,6 +1,6 @@
 GeoBundle\Entity\User:
     type:  entity
-    table: geolyon
+    table: null
     fields:
         id:
             type: integer
@@ -16,3 +16,17 @@ GeoBundle\Entity\User:
         language:
             type: string
             length: 255
+        point:
+            type: integer
+        current1:
+            type: integer
+        current2:
+            type: integer
+        current3:
+            type: integer
+        current4:
+            type: integer
+        current5:
+            type: integer
+        current6:
+            type: integer
