@@ -13,7 +13,26 @@ class LocationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('type')->add('typeDetail')->add('name')->add('address')->add('postalcode')->add('town')->add('phone')->add('mail')->add('website')->add('facebook')->add('rank')->add('openhour')->add('rateclear')->add('minrate')->add('maxrate')->add('producer')->add('latitude')->add('longitude')        ;
+        $builder
+            ->add('type')
+            ->add('typeDetail')
+            ->add('name')
+            ->add('address')
+            ->add('postalcode')
+            ->add('town')
+            ->add('phone')
+            ->add('mail')
+            ->add('website')
+            ->add('facebook')
+            ->add('rank')
+            ->add('openhour')
+            ->add('rateclear')
+            ->add('minrate')
+            ->add('maxrate')
+            ->add('producer')
+            ->add('latitude')
+            ->add('longitude')
+        ;
     }
     
     /**
