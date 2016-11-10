@@ -12,6 +12,11 @@ class DefaultController extends Controller
         return $this->render('GeoBundle:Default:index.html.twig');
     }
 
+    public function homeAction()
+    {
+        return $this->render('GeoBundle:Default:index.html.twig');
+    }
+
     public function loadentityAction()
     {
         $recup=file_get_contents($this->get('kernel')->getRootDir()."/../web/lyondata.json");

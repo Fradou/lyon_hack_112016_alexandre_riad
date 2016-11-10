@@ -2,9 +2,13 @@ geo_location:
     resource: "@GeoBundle/Resources/config/routing/location.yml"
     prefix:   /location
 
-geo_homepage:
+#geo_homepage:
+    #path:     /
+    #defaults: { _controller: GeoBundle:Default:index }
+
+homepage:
     path:     /
-    defaults: { _controller: GeoBundle:Default:index }
+    defaults: { _controller: GeoBundle:Default:home }
 
 # geo_bdload:
 #    path:     /bdload
@@ -17,3 +21,4 @@ geo_test:
 geo_tour:
     resource: "@GeoBundle/Resources/config/routing/tour.yml"
     prefix:   /tour
+
