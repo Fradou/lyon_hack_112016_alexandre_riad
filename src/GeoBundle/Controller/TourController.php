@@ -124,7 +124,7 @@ class TourController extends Controller
             'tours' => $tours,
             'local' => $localisation
         ));
-    }
+    };}
 
     /**
      * Creates a new tour entity.
@@ -139,7 +139,7 @@ class TourController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($tour);
-            $em->flush($tour);
+            $em->flush();
 
             return $this->redirectToRoute('tour_show', array('id' => $tour->getId()));
         }
