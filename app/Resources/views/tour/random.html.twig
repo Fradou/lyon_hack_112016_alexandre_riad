@@ -103,12 +103,18 @@
                 Facebook : {{ location.facebook }}<br>
                     {% endif %}
                 </div>
-                {{ location.rank }}
-                {{ location.openhour }}
-                {{ location.rateclear }}
-                {{ location.minrate }}
-                {{ location.maxrate }}
-                {{ location.producer }}
+{% if location.rank %}
+                {{ location.rank }}<br>
+{% endif %}
+{% if location.openhour %}
+                {{ location.openhour }}<br>
+{% endif %}
+{% if location.rateclear %}
+                {{ location.rateclear }}<br>
+{% endif %}
+{% if location.producer %}
+                {{ location.producer }}<br>
+{% endif %}
                     <ul>
                         <li>
                             <a href="{{ path('location_show', { 'id': location.id }) }}" target="_blank">Voir la fiche de l'établissement</a>
