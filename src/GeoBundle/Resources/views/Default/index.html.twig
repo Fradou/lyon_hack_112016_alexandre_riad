@@ -5,8 +5,8 @@
     <section id="starting-page">
         <div id="welcome">
             <input type="text" name="categorie" placeholder="Restauration, Culture, Monuments ..."> <br />
-            <button><a href="">Choisir son parcours!</a></button>
-            <button><a href="">Surprenez-moi!</a></button>
+            <a href="{{ path('surprise') }}"><button>Choisir son parcours!</button></a>
+            <a href="{{ path('tour_random', { 'n': 5, 'type': 'ALL'})}}"><button>Surprenez-moi!</button></a>
         </div>
     </section>
 

@@ -24,3 +24,7 @@ geo_tour:
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+surprise:
+    path:     /surprise
+    defaults: { _controller: GeoBundle:Default:surprise }
