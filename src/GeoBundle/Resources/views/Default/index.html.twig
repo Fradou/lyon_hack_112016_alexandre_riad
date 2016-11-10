@@ -1,8 +1,13 @@
-{% extends "base.html.twig" %}
+{% extends "@Geo/layout.html.twig" %}
 
 {% block body %}
-    <p>
-        Index GeoController
-    </p>
+
+    <section id="starting-page">
+        <div id="welcome">
+            <input type="text" name="categorie" placeholder="Restauration, Culture, Monuments ..."> <br />
+            <button><a href="">Choisir son parcours!</a></button>
+            <button><a href="">Surprenez-moi!</a></button>
+        </div>
+    </section>
 
 {% endblock %}
