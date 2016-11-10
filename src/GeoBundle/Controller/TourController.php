@@ -125,7 +125,7 @@ class TourController extends Controller
             'tours' => $tours,
             'local' => $localisation
         ));
-    };}
+    }
 
     /**
      * Creates a new tour entity.
