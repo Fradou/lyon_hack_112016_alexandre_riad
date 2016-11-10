@@ -60,4 +60,16 @@ class DefaultController extends Controller
     {
 
     }
+
+    public function surpriseAction()
+    {
+        echo "<script>alert(\"SURPRISE !! C'est random quand même !\")</script>";
+        echo "<script>alert(\"T'as cru que y'aurai qu'un seul script pourri ? HA HA ! Comme dirait Nelson !\")</script>";
+        echo "<script>alert(\"Un petit dernier, je voudrais pas faire le mec lourd non plus !\")</script>";
+        $response = $this->forward('GeoBundle:Tour:random', array(
+            'type'  => 'ALL',
+            'n' => 5));
+        return $response;
+
+    }
 }

@@ -83,29 +83,30 @@ class TourController extends Controller
         };
         $j=0;
         foreach($selloc as $sello ) {
-           $recup = $em->getRepository('GeoBundle:Location')->findBy(
-           array('name' => $sello)
-           );
+            $recup = $em->getRepository('GeoBundle:Location')->findBy(
+                array('name' => $sello)
+            );
             $localisation[$j] = new Location();
-            $localisation[$j]->setType($recup['properties']['type']);
-            $localisation[$j]->setTypeDetail($recup['properties']['type_detail']);
-            $localisation[$j]->setName($recup['properties']['nom']);
-            $localisation[$j]->setAddress($recup['properties']['adresse']);
-            $localisation[$j]->setPostalcode($recup['properties']['codepostal']);
-            $localisation[$j]->setTown($recup['properties']['commune']);
-            $localisation[$j]->setPhone($recup['properties']['telephone']);
-            $localisation[$j]->setMail($recup['properties']['email']);
-            $localisation[$j]->setWebsite($recup['properties']['siteweb']);
-            $localisation[$j]->setFacebook($recup['properties']['facebook']);
-            $localisation[$j]->setRank($recup['properties']['classement']);
-            $localisation[$j]->setOpenhour($recup['properties']['ouverture']);
-            $localisation[$j]->setRateclear($recup['properties']['tarifsenclair']);
-            $localisation[$j]->setMinrate($recup['properties']['tarifsmin']);
-            $localisation[$j]->setMaxrate($recup['properties']['tarifsmax']);
-            $localisation[$j]->setProducer($recup['properties']['producteur']);
-            $localisation[$j]->setLatitude($recup['geometry']['coordinates'][1]);
-            $localisation[$j]->setLongitude($recup['geometry']['coordinates'][0]);
+            $localisation[$j]->setType($recup['type']);
+            $localisation[$j]->setTypeDetail($recup->type_detail);
+            $localisation[$j]->setName($recup->nom);
+            $localisation[$j]->setAddress($recup->adresse);
+            $localisation[$j]->setPostalcode($recup->codepostal);
+            $localisation[$j]->setTown($recup->commune);
+            $localisation[$j]->setPhone($recup->telephone);
+            $localisation[$j]->setMail($recup->email);
+            $localisation[$j]->setWebsite($recup->siteweb);
+            $localisation[$j]->setFacebook($recup->facebook);
+            $localisation[$j]->setRank($recup->classement);
+            $localisation[$j]->setOpenhour($recup->ouverture);
+            $localisation[$j]->setRateclear($recup->tarifsenclair);
+            $localisation[$j]->setMinrate($recup->tarifsmin);
+            $localisation[$j]->setMaxrate($recup->tarifsmax);
+            $localisation[$j]->setProducer($recup->producteur);
+            $localisation[$j]->setLatitude($recup->coordinates[1]);
+            $localisation[$j]->setLongitude($recup->coordinates[0]);
             $j++;
+        }
 
 #        $coordo = [];
  #       $j=0;
@@ -139,7 +140,7 @@ class TourController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($tour);
-            $em->flush($tour);
+            $em->flush();
 
             return $this->redirectToRoute('tour_show', array('id' => $tour->getId()));
         }
@@ -199,7 +200,7 @@ class TourController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($tour);
-            $em->flush($tour);
+            $em->flush();
         }
 
         return $this->redirectToRoute('tour_index');
