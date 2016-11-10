@@ -17,7 +17,7 @@ class Tour
     /**
      * @var string
      */
-    private $name;
+    public $name;
 
     /**
      * @var string
