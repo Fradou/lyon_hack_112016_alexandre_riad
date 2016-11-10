@@ -7,6 +7,12 @@ GeoBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
+        firstName:
+            type: string
+            length: 255
+        lastName:
+            type: string
+            length: 255
         country:
             type: string
             length: 255

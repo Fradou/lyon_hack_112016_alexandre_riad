@@ -1,0 +1,62 @@
+
+/**** ACCEUIL ****/
+
+#starting-page {
+    background-image: url(../img/lyon-quai-daone-.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 80vh;
+}
+
+#welcome {
+    padding-top: 15%;
+    display: block;
+    margin: 0 auto;
+    padding-left: 36%;
+}
+
+#welcome input {
+    height: 75px;
+    width: 504px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border: solid 2px #ffffff;
+    margin-bottom: 5px;
+    padding: 0 20px;
+
+}
+
+#welcome button {
+    height: 75px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border: solid 2px #ffffff;
+}
+
+/**** FOOTER ****/
+
+#footer {
+    background-color: #363636;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+#footer h2 {
+    padding-top: 25px;
+    margin: 0;
+}
+
+#social-media {
+    font-size: 4em;
+}
+
+#social-media i {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+#social-media i:hover {
+    color: #5eb5e0;
+}
+
