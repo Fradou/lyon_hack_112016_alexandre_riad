@@ -23,7 +23,7 @@
                         {% endif %}
                     ]                    ;
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 14,
+                zoom: 13,
                 center: {lat: step[0][1], lng: step[0][2] }
             });
             for (i = 0; i < step.length; i++) {
@@ -58,6 +58,20 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRJYqepEx86x2cyTnEOjlCcM-FxsOoraY&callback=initMap">
     </script>
     <section id="random-activities">
+        <a href="{{ path('tour_random', { 'n': 5, 'type': 'ALL'})}}"><button>Je veux une autre proposition <!doctype
+                html>
+                <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport"
+                          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+                    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                    <title>Document</title>
+                </head>
+                <body>
+                
+                </body>
+                </html></button></a>
         {% for location in allloc %}
         <h2>{{ location.name }}</h2>
         <h3>{{ location.typeDetail }}</h3>
