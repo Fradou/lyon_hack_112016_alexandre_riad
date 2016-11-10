@@ -22,3 +22,8 @@ tour_delete:
     path:     /{id}/delete
     defaults: { _controller: "GeoBundle:Tour:delete" }
     methods:  DELETE
+
+tour_random:
+    path:     /{type}/{n}/random
+    defaults: { _controller: "GeoBundle:Tour:random" }
+    methods:  GET

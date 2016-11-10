@@ -12,6 +12,28 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class TourController extends Controller
 {
+    public function randomAction($type, $n)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $allloc = $em->getRepository('GeoBundle:Location')->findBy(
+            array('type' => $type),
+            array('id' => 'asc'),
+            5000,
+            0
+        );
+        $keys = array_rand($allloc, $n);
+        $selloc = [];
+        $i=0;
+        foreach($keys as $key) {
+            $selloc[$i] = $allloc[$key];
+            $i++;
+        }
+
+        return $this->render('tour/random.html.twig', array(
+            'allloc' => $selloc,
+        ));
+    }
     /**
      * Lists all tour entities.
      *

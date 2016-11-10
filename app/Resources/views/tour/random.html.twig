@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Locations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Type</th>
+                <th>Typedetail</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Postalcode</th>
+                <th>Town</th>
+                <th>Phone</th>
+                <th>Mail</th>
+                <th>Website</th>
+                <th>Facebook</th>
+                <th>Rank</th>
+                <th>Openhour</th>
+                <th>Rateclear</th>
+                <th>Minrate</th>
+                <th>Maxrate</th>
+                <th>Producer</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in allloc %}
+            <tr>
+                <td><a href="{{ path('location_show', { 'id': location.id }) }}">{{ location.id }}</a></td>
+                <td>{{ location.type }}</td>
+                <td>{{ location.typeDetail }}</td>
+                <td>{{ location.name }}</td>
+                <td>{{ location.address }}</td>
+                <td>{{ location.postalcode }}</td>
+                <td>{{ location.town }}</td>
+                <td>{{ location.phone }}</td>
+                <td>{{ location.mail }}</td>
+                <td>{{ location.website }}</td>
+                <td>{{ location.facebook }}</td>
+                <td>{{ location.rank }}</td>
+                <td>{{ location.openhour }}</td>
+                <td>{{ location.rateclear }}</td>
+                <td>{{ location.minrate }}</td>
+                <td>{{ location.maxrate }}</td>
+                <td>{{ location.producer }}</td>
+                <td>{{ location.latitude }}</td>
+                <td>{{ location.longitude }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('location_show', { 'id': location.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('location_edit', { 'id': location.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <ul>
+        <li>
+            <a href="{{ path('location_new') }}">Create a new location</a>
+        </li>
+    </ul>
+{% endblock %}

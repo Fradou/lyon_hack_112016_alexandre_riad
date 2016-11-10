@@ -38,5 +38,8 @@ GeoBundle\Entity\Tour:
         step6:
             type: integer
             nullable: true
+        step:
+            type: array
+            nullable: true
 
     lifecycleCallbacks: {  }
