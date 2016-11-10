@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tour</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tour.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ tour.name }}</td>
+            </tr>
+            <tr>
+                <th>Category</th>
+                <td>{{ tour.category }}</td>
+            </tr>
+            <tr>
+                <th>Cost</th>
+                <td>{{ tour.cost }}</td>
+            </tr>
+            <tr>
+                <th>Step1</th>
+                <td>{{ tour.step1 }}</td>
+            </tr>
+            <tr>
+                <th>Step2</th>
+                <td>{{ tour.step2 }}</td>
+            </tr>
+            <tr>
+                <th>Step3</th>
+                <td>{{ tour.step3 }}</td>
+            </tr>
+            <tr>
+                <th>Step4</th>
+                <td>{{ tour.step4 }}</td>
+            </tr>
+            <tr>
+                <th>Step5</th>
+                <td>{{ tour.step5 }}</td>
+            </tr>
+            <tr>
+                <th>Step6</th>
+                <td>{{ tour.step6 }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tour_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tour_edit', { 'id': tour.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

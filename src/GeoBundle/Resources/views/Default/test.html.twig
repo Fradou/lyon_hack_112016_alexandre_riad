@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #map {
+            height: 500px;
+            width: 50%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+<script>
+    function initMap() {
+        var step = [
+            ['Bondi Beach', -33.890542, 151.274856, 4],
+            ['Coogee Beach', -33.923036, 151.259052, 5],
+            ['Cronulla Beach', -34.028249, 151.157507, 3],
+            ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+            ['Maroubra Beach', -33.950198, 151.259302, 1]
+        ];
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: {lat: step[0][1], lng: step[0][2] }
+        });
+        for (i = 0; i < step.length; i++) {
+            var marker = new google.maps.Marker({
+                position: {lat: step[i][1], lng: step[i][2]},
+                map: map,
+                title: step[i][0]
+            });
+            /*var contentMarker = step[i][0];
+
+            var infoWindow = new google.maps.InfoWindow({
+                content: contentMarker,
+                position: {lat: step[i][1], lng: step[i][2]}
+            });*/
+        }
+            /* google.maps.event.addListener(marker, 'click', function() {
+                infoWindow.open(map);
+            }); */
+        /*    google.maps.event.addListener(marker, 'click', function () {
+                var infowindow = new google.maps.InfoWindow({
+                    content: 'Hello Title',
+                    position: {lat: step[i][1], lng: step[i][2]}
+                });
+                infowindow.open(map);
+            })*/
+    }
+
+    function calculate() {
+        origin      = document.getElementById('origin').value; // Le point départ
+        destination = document.getElementById('destination').value; // Le point d'arrivé
+        if(origin && destination){
+            var request = {
+                origin      : origin,
+                destination : destination,
+                travelMode  : google.maps.DirectionsTravelMode.DRIVING // Type de transport
+            };
+            var directionsService = new google.maps.DirectionsService(); // Service de calcul d'itinéraire
+            directionsService.route(request, function(response, status){ // Envoie de la requête pour calculer le parcours
+                if(status == google.maps.DirectionsStatus.OK){
+                    direction.setDirections(response); // Trace l'itinéraire sur la carte et les différentes étapes du parcours
+                }
+            });
+        } //http://code.google.com/intl/fr-FR/apis/maps/documentation/javascript/reference.html#DirectionsRequest
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key= AIzaSyBRJYqepEx86x2cyTnEOjlCcM-FxsOoraY&callback=initMap">
+</script>
+</body>
+</html>
