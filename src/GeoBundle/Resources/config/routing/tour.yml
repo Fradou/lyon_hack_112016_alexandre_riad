@@ -1,0 +1,24 @@
+tour_index:
+    path:     /
+    defaults: { _controller: "GeoBundle:Tour:index" }
+    methods:  GET
+
+tour_show:
+    path:     /{id}/show
+    defaults: { _controller: "GeoBundle:Tour:show" }
+    methods:  GET
+
+tour_new:
+    path:     /new
+    defaults: { _controller: "GeoBundle:Tour:new" }
+    methods:  [GET, POST]
+
+tour_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GeoBundle:Tour:edit" }
+    methods:  [GET, POST]
+
+tour_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GeoBundle:Tour:delete" }
+    methods:  DELETE

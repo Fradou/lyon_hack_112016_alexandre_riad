@@ -1,0 +1,82 @@
+GeoBundle\Entity\Location:
+    type: entity
+    table: null
+    repositoryClass: GeoBundle\Repository\LocationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        type:
+            type: string
+            length: 255
+            nullable: true
+        typeDetail:
+            type: string
+            length: 255
+            column: type_detail
+            nullable: true
+        name:
+            type: string
+            length: 255
+            nullable: true
+        address:
+            type: text
+            nullable: true
+        postalcode:
+            type: string
+            length: 255
+            nullable: true
+        town:
+            type: string
+            length: 255
+            nullable: true
+        phone:
+            type: string
+            length: 255
+            nullable: true
+        mail:
+            type: string
+            length: 255
+            nullable: true
+        website:
+            type: string
+            length: 255
+            nullable: true
+        facebook:
+            type: string
+            length: 255
+            nullable: true
+        rank:
+            type: string
+            length: 255
+            nullable: true
+        openhour:
+            type: text
+            nullable: true
+        rateclear:
+            type: text
+        minrate:
+            type: string
+            length: 255
+            nullable: true
+        maxrate:
+            type: string
+            length: 255
+            nullable: true
+        producer:
+            type: string
+            length: 255
+            nullable: true
+        latitude:
+            type: string
+            length: 255
+            nullable: true
+        longitude:
+            type: string
+            length: 255
+            nullable: true
+
+    lifecycleCallbacks: {  }
